@@ -297,7 +297,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Handle all dropdowns
             const dropdowns = document.querySelectorAll('.nav-item-dropdown');
-            
+
             dropdowns.forEach(dropdown => {
                 const dropdownToggle = dropdown.querySelector('.nav-item');
                 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
@@ -305,7 +305,7 @@
 
                 dropdownToggle.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
+
                     // Close other dropdowns
                     dropdowns.forEach(otherDropdown => {
                         if (otherDropdown !== dropdown) {
@@ -314,7 +314,7 @@
                             if (otherArrow) otherArrow.classList.remove('rotated');
                         }
                     });
-                    
+
                     // Toggle current dropdown
                     dropdown.classList.toggle('active');
                     if (dropdownArrow) {
@@ -337,5 +337,6 @@
             });
         });
     </script>
+    <script type="module" src="/js/dashboard.js"></script>
 </body>
 </html>
