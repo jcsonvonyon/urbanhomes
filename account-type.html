@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanHomes - Account Type</title>
+    <link rel="stylesheet" href="css/account-type.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                                <a href="index.html"><img src="images/site-logo.png" alt="UrbanHomes"></a>
+
+            </div>
+            <div class="auth-section">
+                <span class="auth-text">Already have an account?</span>
+                <button class="sign-in-btn">Sign In</button>
+                <!-- <button class="select-btn">Select</button> -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <h1 class="page-title">Account Type</h1>
+                <p class="page-subtitle">Choose the user account type that suits your needs.</p>
+
+                <!-- Account Type Cards -->
+                <div class="account-cards">
+                    <div class="account-card" data-type="tenant">
+                        <div class="card-header">
+                            <span class="free-badge">Free account</span>
+                        </div>
+                        <div class="card-icon">
+                            <div class="icon-circle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9 22V12H15V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="card-title">I'm renting</h3>
+                        <p class="card-subtitle">Tenant</p>
+                    </div>
+
+                    <div class="account-card" data-type="service">
+                        <div class="card-header">
+                            <span class="free-badge">Free account</span>
+                        </div>
+                        <div class="card-icon">
+                            <div class="icon-circle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14.7 6.3C16.2 7.9 16.2 10.5 14.7 12.1L10.6 16.2C9.1 17.8 6.5 17.8 4.9 16.2C3.3 14.7 3.3 12.1 4.9 10.5L9 6.4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M20.2 15.9C18.7 17.5 16.1 17.5 14.5 15.9L10.4 11.8C8.8 10.2 8.8 7.6 10.4 6L14.5 1.9C16.1 0.3 18.7 0.3 20.2 1.9C21.8 3.4 21.8 6 20.2 7.6L16.1 11.7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="card-title">I fix rentals</h3>
+                        <p class="card-subtitle">Service professional</p>
+                    </div>
+
+                    <div class="account-card" data-type="manager">
+                        <div class="card-header">
+                            <span class="free-badge">Free account</span>
+                        </div>
+                        <div class="card-icon">
+                            <div class="icon-circle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="white" stroke-width="2"/>
+                                    <rect x="7" y="7" width="3" height="3" rx="1" fill="white"/>
+                                    <rect x="7" y="14" width="3" height="3" rx="1" fill="white"/>
+                                    <rect x="14" y="7" width="3" height="3" rx="1" fill="white"/>
+                                    <rect x="14" y="14" width="3" height="3" rx="1" fill="white"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="card-title">I manage rentals</h3>
+                        <p class="card-subtitle">Property manager</p>
+                    </div>
+
+                    <div class="account-card" data-type="landlord">
+                        <div class="card-header">
+                            <span class="free-badge">Free account</span>
+                        </div>
+                        <div class="card-icon">
+                            <div class="icon-circle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="7" r="4" stroke="white" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="card-title">I own property</h3>
+                        <p class="card-subtitle">Landlord</p>
+                    </div>
+                </div>
+
+                <!-- Select Button -->
+                <div class="select-section">
+                    <button class="select-btn" id="selectBtn" disabled>Select</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/account-type.js"></script>
+</body>
+</html>
