@@ -6,6 +6,7 @@ export async function signUp(email, password, firstName, lastName, phone) {
       email,
       password,
       options: {
+        emailRedirectTo: `${window.location.origin}/signin.html`,
         data: {
           first_name: firstName,
           last_name: lastName,
@@ -74,4 +75,32 @@ export function onAuthStateChange(callback) {
     })();
   });
   return subscription;
+}
+
+export async function resetPasswordForEmail(email) {
+  try {
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password.html`,
+    });
+
+    if (error) throw error;
+
+    return { data, error: null };
+  } catch (error) {
+    return { data: null, error };
+  }
+}
+
+export async function updatePassword(newPassword) {
+  try {
+    const { data, error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
+
+    if (error) throw error;
+
+    return { data, error: null };
+  } catch (error) {
+    return { data: null, error };
+  }
 }

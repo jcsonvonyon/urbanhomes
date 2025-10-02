@@ -11,6 +11,8 @@ export default defineConfig({
         signup: './signup.html',
         dashboard: './dashboard.html',
         accountType: './account-type.html',
+        forgotPassword: './forgot-password.html',
+        resetPassword: './reset-password.html',
       },
     },
   },

@@ -1,47 +1,46 @@
-import { signIn } from './auth.js';
+import { resetPasswordForEmail } from './auth.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('.auth-form');
+    const form = document.getElementById('forgotPasswordForm');
     const submitBtn = form.querySelector('.submit-btn');
 
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value;
 
-        if (!email || !password) {
-            showAlert('Please enter your email and password', 'error');
+        if (!email) {
+            showAlert('Please enter your email address', 'error');
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showAlert('Please enter a valid email address', 'error');
+            document.getElementById('email').focus();
             return;
         }
 
         const originalBtnText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
 
-        const { data, error } = await signIn(email, password);
+        const { data, error } = await resetPasswordForEmail(email);
 
         if (error) {
             submitBtn.innerHTML = originalBtnText;
             submitBtn.disabled = false;
-
-            if (error.message.includes('Invalid login credentials')) {
-                showAlert('Invalid email or password. Please try again.', 'error');
-            } else if (error.message.includes('Email not confirmed')) {
-                showAlert('Please confirm your email address before signing in. Check your inbox for the confirmation link.', 'error');
-            } else if (error.message.includes('email') && error.message.includes('confirm')) {
-                showAlert('Please verify your email address. Check your inbox for the confirmation link.', 'error');
-            } else {
-                showAlert(error.message || 'Failed to sign in. Please try again.', 'error');
-            }
+            showAlert(error.message || 'Failed to send reset email. Please try again.', 'error');
             return;
         }
 
-        showAlert('Sign in successful! Redirecting to dashboard...', 'success');
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+        showAlert('Password reset link has been sent to your email. Please check your inbox.', 'success');
 
         setTimeout(() => {
-            window.location.href = 'dashboard.html';
-        }, 1000);
+            window.location.href = 'signin.html';
+        }, 3000);
     });
 
     function showAlert(message, type = 'info') {
