@@ -1,8 +1,46 @@
-import { signIn } from './auth.js';
+import { signIn, getSession, resendConfirmationEmail } from './auth.js';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    const { session } = await getSession();
+    if (session) {
+        window.location.href = 'dashboard.html';
+        return;
+    }
+
     const form = document.querySelector('.auth-form');
     const submitBtn = form.querySelector('.submit-btn');
+
+    document.getElementById('resendVerification').addEventListener('click', async function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value.trim();
+
+        if (!email) {
+            showAlert('Please enter your email address first', 'error');
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showAlert('Please enter a valid email address', 'error');
+            return;
+        }
+
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        this.style.pointerEvents = 'none';
+
+        const { error } = await resendConfirmationEmail(email);
+
+        this.innerHTML = 'Didn\'t receive confirmation email?';
+        this.style.pointerEvents = 'auto';
+
+        if (error) {
+            showAlert(error.message || 'Failed to resend confirmation email', 'error');
+            return;
+        }
+
+        showAlert('Confirmation email sent! Please check your inbox.', 'success');
+    });
 
     form.addEventListener('submit', async function (e) {
         e.preventDefault();

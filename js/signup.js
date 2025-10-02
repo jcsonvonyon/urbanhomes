@@ -1,6 +1,12 @@
-import { signUp } from './auth.js';
+import { signUp, getSession } from './auth.js';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    const { session } = await getSession();
+    if (session) {
+        window.location.href = 'dashboard.html';
+        return;
+    }
+
     const form = document.querySelector('.auth-form');
     const submitBtn = form.querySelector('.submit-btn');
 

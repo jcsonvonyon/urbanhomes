@@ -104,3 +104,21 @@ export async function updatePassword(newPassword) {
     return { data: null, error };
   }
 }
+
+export async function resendConfirmationEmail(email) {
+  try {
+    const { data, error } = await supabase.auth.resend({
+      type: 'signup',
+      email: email,
+      options: {
+        emailRedirectTo: `${window.location.origin}/signin.html`,
+      },
+    });
+
+    if (error) throw error;
+
+    return { data, error: null };
+  } catch (error) {
+    return { data: null, error };
+  }
+}

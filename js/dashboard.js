@@ -35,6 +35,14 @@ async function loadUserProfile() {
             if (tenantNameElements.length > 0) {
                 tenantNameElements[0].textContent = `${profile.first_name || ''} ${profile.last_name || ''}`.trim();
             }
+
+            const userBtn = document.querySelector('.header-actions .header-btn:last-child');
+            if (userBtn) {
+                userBtn.title = `${currentUser.email}`;
+                userBtn.addEventListener('click', () => {
+                    window.location.href = 'profile.html';
+                });
+            }
         }
     } catch (error) {
         console.error('Error loading profile:', error);

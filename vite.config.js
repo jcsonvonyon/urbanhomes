@@ -13,6 +13,7 @@ export default defineConfig({
         accountType: './account-type.html',
         forgotPassword: './forgot-password.html',
         resetPassword: './reset-password.html',
+        profile: './profile.html',
       },
     },
   },
