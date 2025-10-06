@@ -52,11 +52,12 @@ document.addEventListener('DOMContentLoaded', async function () {
         const { data, error } = await signUp(email, password, firstName, lastName, phone);
 
         if (error) {
+            console.error('Sign up error:', error);
             submitBtn.innerHTML = originalBtnText;
             submitBtn.disabled = false;
             this.classList.remove('submitting');
 
-            if (error.message.includes('already registered')) {
+            if (error.message.includes('already registered') || error.message.includes('User already registered')) {
                 showAlert('An account with this email already exists. Please sign in instead.', 'error');
             } else {
                 showAlert(error.message || 'Failed to create account. Please try again.', 'error');
@@ -64,11 +65,24 @@ document.addEventListener('DOMContentLoaded', async function () {
             return;
         }
 
-        showAlert('Account created successfully! Please check your email to confirm your account.', 'success');
+        console.log('Sign up response:', { hasSession: !!data?.session, hasUser: !!data?.user });
 
-        setTimeout(() => {
-            window.location.href = 'signin.html';
-        }, 2000);
+        if (data && data.session) {
+            const { logAuthEvent } = await import('./auth-logger.js');
+            await logAuthEvent(data.user.id, 'signup', { email: email });
+
+            showAlert('Account created successfully! Redirecting to dashboard...', 'success');
+
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1000);
+        } else {
+            showAlert('Account created successfully! Please check your email to confirm your account, then sign in.', 'success');
+
+            setTimeout(() => {
+                window.location.href = 'signin.html';
+            }, 2000);
+        }
     });
 
     function showAlert(message, type = 'info') {
