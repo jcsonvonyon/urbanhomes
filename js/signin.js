@@ -1,10 +1,16 @@
 import { signIn, getSession, resendConfirmationEmail } from './auth.js';
+import { logAuthEvent } from './auth-logger.js';
 
 document.addEventListener('DOMContentLoaded', async function () {
     const { session } = await getSession();
     if (session) {
         window.location.href = 'dashboard.html';
         return;
+    }
+
+    if (sessionStorage.getItem('session_expired') === 'true') {
+        sessionStorage.removeItem('session_expired');
+        showAlert('Your session has expired. Please sign in again.', 'error');
     }
 
     const form = document.querySelector('.auth-form');

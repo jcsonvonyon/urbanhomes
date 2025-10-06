@@ -1,5 +1,7 @@
 import { getCurrentUser, signOut, onAuthStateChange } from './auth.js';
 import { supabase } from './supabase-client.js';
+import { logAuthEvent } from './auth-logger.js';
+import { initSessionManager } from './session-manager.js';
 
 let currentUser = null;
 
@@ -50,16 +52,21 @@ async function loadUserProfile() {
 }
 
 function setupLogout() {
-    const logoutLink = document.querySelector('.logout .nav-item');
-    if (logoutLink) {
-        logoutLink.addEventListener('click', async (e) => {
+    const logoutLinks = document.querySelectorAll('.logout .nav-item, #logoutBtn, [data-logout]');
+    logoutLinks.forEach(link => {
+        link.addEventListener('click', async (e) => {
             e.preventDefault();
+
+            if (currentUser) {
+                await logAuthEvent(currentUser.id, 'logout');
+            }
+
             const { error } = await signOut();
             if (!error) {
                 window.location.href = 'signin.html';
             }
         });
-    }
+    });
 }
 
 onAuthStateChange((event, session) => {
@@ -71,4 +78,5 @@ onAuthStateChange((event, session) => {
 document.addEventListener('DOMContentLoaded', async () => {
     await checkAuth();
     setupLogout();
+    initSessionManager();
 });
