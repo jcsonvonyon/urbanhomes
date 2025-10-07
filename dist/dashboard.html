@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="UrbanHomes Tenant Dashboard">
+    <meta name="keywords" content="real estate, rental, tenant dashboard">
+    <meta name="author" content="UrbanHomes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon-CR0O1fF0.png">
+
+    <title>UrbanHomes - Tenant Dashboard</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/dashboard-DN4ham15.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="/assets/auth-Wv6XBAm1.js">
+  <link rel="modulepreload" crossorigin href="/assets/auth-logger-D64jFNGW.js">
+  <link rel="stylesheet" crossorigin href="/assets/dashboard-Z6XDOCvC.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+                <a href="dashboard.html"><img src="/assets/site-logo-DSgzeKYm.png" alt="UrbanHomes"></a>
+        </div>
+        <div class="header-actions">
+            <button class="header-btn"><i class="fas fa-home"></i></button>
+            <button class="header-btn"><i class="fas fa-envelope"></i></button>
+            <button class="header-btn"><i class="fas fa-bell"></i></button>
+            <button class="header-btn"><i class="fas fa-user"></i></button>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="rent.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Rent</span>
+                </a>
+                <div class="nav-item-dropdown">
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-users"></i>
+                        <span>Contacts</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="contact-ll.html" class="dropdown-item">Landlords</a>
+                        <a href="contact-pm.html" class="dropdown-item">Property Managers</a>
+                        <a href="contact-sp.html" class="dropdown-item">Service Professionals</a>
+                    </div>
+                </div>
+                <a href="documents.html" class="nav-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Documents</span>
+                </a>
+                <a href="maintenance.html" class="nav-item">
+                    <i class="fas fa-wrench"></i>
+                    <span>Maintenance</span>
+                </a>
+                <a href="accounting.html" class="nav-item">
+                    <i class="fas fa-calculator"></i>
+                    <span>Accounting</span>
+                </a>
+                <div class="nav-item-dropdown">
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-list"></i>
+                        <span>Listing</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="listing-rent.html" class="dropdown-item">Rent</a>
+                        <a href="listing-lease.html" class="dropdown-item">Lease</a>
+                    </div>
+                </div>
+                <a href="applications.html" class="nav-item">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Application</span>
+                </a>
+                <a href="message.html" class="nav-item">
+                    <i class="fas fa-comments"></i>
+                    <span>Message</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Profile Settings</span>
+                </a>
+            </nav>
+            <div class="logout">
+                <a href="signin.html" class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <h1>Hi, Adewale</h1>
+                <p>What will you be doing today?</p>
+            </div>
+
+            <!-- Content Grid - 3 Columns -->
+            <div class="content-grid">
+                <!-- Left Column -->
+                <div class="left-column">
+                    <!-- Today's Tasks -->
+                    <div class="card today-tasks">
+                        <div class="card-header">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <h3>Today, May 8, 2025</h3>
+                                <p>There are no reminders for today.</p>
+                            </div>
+                            <button class="view-all-btn">View all</button>
+                        </div>
+                    </div>
+
+                    <!-- Identity Verification -->
+                    <div class="card verification-card">
+                        <div class="progress-header">
+                            <span class="progress-text">0% Complete</span>
+                            <span class="progress-count">1/4</span>
+                        </div>
+                        <div class="verification-content">
+                            <div class="verification-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Verify Your Identity</h3>
+                            <p>Add wallet to you account and make payment easily on UrbanHomes</p>
+                            <button class="get-started-btn">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middle Column - Tenant Info -->
+                <div class="middle-column">
+                    <div class="card tenant-info">
+                        <div class="tenant-header">
+                            <span class="tenant-badge">Tenant</span>
+                            <span class="status-badge active">Active</span>
+                        </div>
+                        <div class="tenant-details">
+                            <div class="detail-row">
+                                <i class="fas fa-user"></i>
+                                <span>Adewale Uchechukwu Alu</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-building"></i>
+                                <span>Ajetunmobi House</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-door-open"></i>
+                                <span>Room 003</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-bed"></i>
+                                <span>2 Bedroom</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-naira-sign"></i>
+                                <span>₦1,200,000 <small>/per annum</small></span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-calendar"></i>
+                                <span>Oct. 12, 2025 - Oct. 12, 2026</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Shomolu, Lagos</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-clock"></i>
+                                <span>Member since Sept., 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Payment Section -->
+                <div class="right-column">
+                    <div class="payment-section">
+                        <!-- Rent Payment Card -->
+                        <div class="card rent-payment">
+                            <div class="rent-amount">₦1,200,000</div>
+                            <div class="rent-label">Rent Amount</div>
+                            <button class="pay-rent-btn">Pay Rent</button>
+                        </div>
+
+                        <!-- Wallet Balance Card -->
+                        <div class="card wallet-balance">
+                            <div class="balance-amount">₦0</div>
+                            <div class="balance-label">Wallet Balance</div>
+                            <button class="fund-wallet-btn">Fund Wallet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transactions Section -->
+            <div class="card transactions-card">
+                <h2>Transactions</h2>
+                <div class="table-container">
+                    <table class="transactions-table">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Due Date</th>
+                                <th>Description</th>
+                                <th>Property Manager</th>
+                                <th>Total/Paid</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="status-badge paid">Paid</span></td>
+                                <td>12 Oct 2024</td>
+                                <td>
+                                    <div class="description">
+                                        <strong>Maintenance</strong>
+                                        <small>Roof Licking</small>
+                                    </div>
+                                </td>
+                                <td>Ajayi Tunde</td>
+                                <td>₦500,000</td>
+                                <td><button class="details-btn">Details</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="status-badge overdue">Overdue</span></td>
+                                <td>12 Sept 2024</td>
+                                <td>
+                                    <div class="description">
+                                        <strong>Rent</strong>
+                                        <small>Ajetunmobi House, Unit 01</small>
+                                    </div>
+                                </td>
+                                <td>Emeka Micheal</td>
+                                <td>₦1,200,000</td>
+                                <td><button class="details-btn">Details</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="status-badge overdue">Overdue</span></td>
+                                <td>12 Aug 2024</td>
+                                <td>
+                                    <div class="description">
+                                        <strong>Service Charge</strong>
+                                        <small>Ajetunmobi House, Unit 01</small>
+                                    </div>
+                                </td>
+                                <td>Bambo & Co.</td>
+                                <td>₦150,000</td>
+                                <td><button class="details-btn">Details</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="status-badge success">Success</span></td>
+                                <td>12 Jul 2024</td>
+                                <td>
+                                    <div class="description">
+                                        <strong>Funded Wallet</strong>
+                                    </div>
+                                </td>
+                                <td>Bambo & Co.</td>
+                                <td>₦125,000</td>
+                                <td><button class="details-btn">Details</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="status-badge paid">Paid</span></td>
+                                <td>12 Jul 2024</td>
+                                <td>
+                                    <div class="description">
+                                        <strong>Maintenance</strong>
+                                        <small>Faulty Borehold</small>
+                                    </div>
+                                </td>
+                                <td>Bambo & Co.</td>
+                                <td>₦50,000</td>
+                                <td><button class="details-btn">Details</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-footer">
+                    <span>Showing 5 - 1 of 10 results</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle all dropdowns
+            const dropdowns = document.querySelectorAll('.nav-item-dropdown');
+
+            dropdowns.forEach(dropdown => {
+                const dropdownToggle = dropdown.querySelector('.nav-item');
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                const dropdownArrow = dropdown.querySelector('.dropdown-arrow');
+
+                dropdownToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Close other dropdowns
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                            const otherArrow = otherDropdown.querySelector('.dropdown-arrow');
+                            if (otherArrow) otherArrow.classList.remove('rotated');
+                        }
+                    });
+
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
+                    if (dropdownArrow) {
+                        dropdownArrow.classList.toggle('rotated');
+                    }
+                });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('active');
+                        const dropdownArrow = dropdown.querySelector('.dropdown-arrow');
+                        if (dropdownArrow) {
+                            dropdownArrow.classList.remove('rotated');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

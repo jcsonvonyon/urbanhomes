@@ -1,0 +1,1 @@
+import{a as o}from"./auth-Wv6XBAm1.js";async function s(e,r,a={}){try{const{error:t}=await o.from("auth_logs").insert({user_id:e,event_type:r,user_agent:navigator.userAgent,metadata:a});if(t)throw t}catch(t){console.error("Failed to log auth event:",t)}}export{s as logAuthEvent};
