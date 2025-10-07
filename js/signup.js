@@ -65,19 +65,43 @@ document.addEventListener('DOMContentLoaded', async function () {
             return;
         }
 
-        console.log('Sign up response:', { hasSession: !!data?.session, hasUser: !!data?.user });
+        console.log('Sign up response:', {
+            hasSession: !!data?.session,
+            hasUser: !!data?.user,
+            userEmail: data?.user?.email,
+            emailConfirmed: data?.user?.email_confirmed_at,
+            identities: data?.user?.identities?.length
+        });
 
-        if (data && data.session) {
-            const { logAuthEvent } = await import('./auth-logger.js');
-            await logAuthEvent(data.user.id, 'signup', { email: email });
+        if (data && data.user) {
+            if (data.session) {
+                try {
+                    const { logAuthEvent } = await import('./auth-logger.js');
+                    await logAuthEvent(data.user.id, 'signup', { email: email });
+                } catch (logError) {
+                    console.warn('Failed to log auth event:', logError);
+                }
 
-            showAlert('Account created successfully! Redirecting to dashboard...', 'success');
+                showAlert('Account created successfully! Redirecting to dashboard...', 'success');
 
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 1000);
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1000);
+            } else if (data.user.identities && data.user.identities.length === 0) {
+                showAlert('Account created! Please check your email to verify your account before signing in.', 'success');
+
+                setTimeout(() => {
+                    window.location.href = 'signin.html';
+                }, 3000);
+            } else {
+                showAlert('Account created successfully! You can now sign in.', 'success');
+
+                setTimeout(() => {
+                    window.location.href = 'signin.html';
+                }, 2000);
+            }
         } else {
-            showAlert('Account created successfully! Please check your email to confirm your account, then sign in.', 'success');
+            showAlert('Account created! Please check your email to confirm your account.', 'success');
 
             setTimeout(() => {
                 window.location.href = 'signin.html';
